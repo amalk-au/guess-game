@@ -1,99 +1,71 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Copyright <2017> <www.Agilesoft.com.au>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
--->
-
-
-<title>What finger am I holding</title>
-<style>
-
-#resultDiv{
-color:blue;
-text-align: center;
-font-size: 2em;
-}
-
+    <title>What finger am I holding</title>
+    <style>
+      #resultDiv {
+        color: blue;
+        text-align: center;
+        font-size: 2em;
+      }
     </style>
-                
+  </head>
 
-</head>
+  <body>
+    <div id="resultDiv">
+      <h1>Hi I will guess, how many fingers you are holding up !</h1>
+      <p>
+        Please select how Many fingers you are holding up from below menu and
+        click Guess
+      </p>
+      <select id="input">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
 
-<body>
+      <button id="submit">Guess</button>
+      <p id="guess"></p>
+      <p id="tries"></p>
+    </div>
 
-<div id="resultDiv">
-<h1> Hi I will guess, how many fingers you are holding up !</h1>
-<p>Please select how Many fingers you are holding up from below menu and click Guess</p>
-<select id="input">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-</select>
+    <script type="text/javascript">
+      var humanInput = "";
 
-<button id="submit">Guess</button>
-<p id="guess"></p>
-<p id="tries"></p>
+      document.getElementById("submit").onclick = function () {
+        var gotIt = false;
+        var numberOfGuesses = 1;
 
-</div>
-    
-<script type="text/javascript">
+        while (gotIt == false) {
+          humanInput = document.getElementById("input").value;
 
-var humanInput = "";
+          randomNumber = Math.random();
+          randomNumber = randomNumber * 6;
+          randomNumber = Math.floor(randomNumber);
 
-document.getElementById("submit").onclick = function () {
-var gotIt=false;
-var numberOfGuesses=1;
+          document.getElementById("guess").innerHTML = randomNumber;
 
-while (gotIt==false)
-        {
-
-        humanInput=document.getElementById("input").value;
-
-        randomNumber = Math.random();
-        randomNumber= randomNumber*6;
-        randomNumber= Math.floor(randomNumber);
-
-        document.getElementById("guess").innerHTML=randomNumber;
-
-
-
-        if (humanInput==randomNumber){
-        gotIt=true;    
-        document.getElementById("guess").innerHTML="Awesome Found it in:"+ numberOfGuesses +" "+"Attempts";
-
-        }else {
-
-        document.getElementById("guess").innerHTML="My guess was:"+randomNumber+" "+"<br>"+"I will try again";
-        numberOfGuesses++;
+          if (humanInput == randomNumber) {
+            gotIt = true;
+            document.getElementById("guess").innerHTML =
+              "Awesome Found it in:" + numberOfGuesses + " " + "Attempts";
+          } else {
+            document.getElementById("guess").innerHTML =
+              "My guess was:" +
+              randomNumber +
+              " " +
+              "<br>" +
+              "I will try again";
+            numberOfGuesses++;
+          }
         }
-
-        }
-
-}
-
-
-
+      };
     </script>
-
-    </body>
-
+  </body>
 </html>
