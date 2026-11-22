@@ -12,6 +12,10 @@ A simple browser-based guessing game where the computer tries to guess how many 
 
 - Displays the number of attempts taken.
 
+## Screenshots
+
+![game-play](./docs/screenshots/game-play.png)
+
 ## Live Demo : [Play Number of Fingers](http://amalk.au/guess-game/)
 
 ## Tech Stack
